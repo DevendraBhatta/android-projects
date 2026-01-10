@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -75,16 +76,43 @@ fun BizCard() {
                         Log.d("Clicked", "BizCard: Clicked")
 
                     }
-                ){
+                ) {
                     Text(
                         text = "Portfolio",
                         style = MaterialTheme.typography.bodyMedium,
 
-                    )
+                        )
                 }
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun Content() {
+    Box(modifier = Modifier.fillMaxWidth()
+        .fillMaxHeight()
+        .padding(5.dp)){
+        Surface(modifier = Modifier.padding(3.dp)
+            .fillMaxWidth()
+            .fillMaxHeight(),
+            shape = RoundedCornerShape(corner = CornerSize(6.dp)),
+            border = BorderStroke(width = 2.dp, color = Color.LightGray)
+        ) {
+            Portfolio(data = listOf("Project 1","Project 2","Project 3"))
+        }
+    }
+
+}
+
+@Composable
+fun Portfolio(data:List<String>) {
+
+    Text(
+        text = "Portfolio"
+    )
+
 }
 
 
@@ -110,10 +138,10 @@ private fun ImageProfile(modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun CreateInfo(){
-    Column (
+private fun CreateInfo() {
+    Column(
         modifier = Modifier.padding(5.dp)
-    ){
+    ) {
         Text(
             text = "Miles P.",
             style = MaterialTheme.typography.headlineMedium,
@@ -134,7 +162,7 @@ private fun CreateInfo(){
 
 }
 
-@Preview(showBackground = true)
+// @Preview(showBackground = true)
 @Composable
 fun BizCardPreview() {
     BizCard()
